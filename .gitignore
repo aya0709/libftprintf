@@ -1,0 +1,9 @@
+*.a
+*.o
+a.out
+libft-tester-tokyo/
+libftTester/
+printfTester/
+ft_lst*
+main.c
+a.out

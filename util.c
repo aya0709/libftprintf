@@ -6,7 +6,7 @@
 /*   By: ataira <ataira@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 18:59:53 by ataira            #+#    #+#             */
-/*   Updated: 2023/02/20 12:02:08 by ataira           ###   ########.fr       */
+/*   Updated: 2023/02/20 13:51:53 by ataira           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,7 @@ int	iscspdiux(char id)
 
 size_t	ft_putchar_fd_len(char c, int fd)
 {
-	write(fd, &c, 1);
-	return ((size_t)1);
+	return (write(fd, &c, 1));
 }
 
 size_t	ft_putstr_len(char *s, int fd)
@@ -33,7 +32,6 @@ size_t	ft_putstr_len(char *s, int fd)
 	if (s == NULL)
 	{
 		return (write(fd, "(null)", 6));
-		return (0);
 	}
 	len = ft_strlen(s);
 	return (write(fd, s, len));
@@ -60,6 +58,6 @@ size_t	ft_putad_fd(void *p, char id)
 	size_t			len;
 
 	ap = (unsigned long)p;
-	len = ft_putnbr_base(ap, id) + 2;
+	len = ft_putnbr_base(ap, id);
 	return (len);
 }

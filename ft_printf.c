@@ -6,7 +6,7 @@
 /*   By: ataira <ataira@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 02:10:26 by ataira            #+#    #+#             */
-/*   Updated: 2023/02/20 12:00:36 by ataira           ###   ########.fr       */
+/*   Updated: 2023/02/20 14:01:52 by ataira           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,10 @@
 size_t	ft_putnbr_base(unsigned long nbr, char id)
 {
 	int				basenum;
-	int				index;
 	unsigned long	surplus;
 	size_t			len;
 	char			*base;
 
-	index = 0;
 	surplus = nbr;
 	if (id != 'p')
 		surplus = (unsigned int)nbr;
@@ -30,14 +28,12 @@ size_t	ft_putnbr_base(unsigned long nbr, char id)
 	else
 		base = "0123456789ABCDEF";
 	basenum = ft_strlen(base);
-	if (id == 'p')
-		write(STDOUT_FILENO, "0x", 2);
-	if (nbr < 0)
-	{
-		write(STDOUT_FILENO, "-", 1);
-		surplus *= -1;
-	}
 	convert(surplus, basenum, base, id);
+	if (id == 'p')
+	{
+		write(STDOUT_FILENO, "0x", 2);
+		len += 2;
+	}
 	return (len);
 }
 
@@ -81,8 +77,6 @@ size_t	ft_search_cspdiux(va_list args, char id)
 		len = ft_putnbr_base((int)va_arg(args, int), id);
 	else if (id == '%')
 		len = write(STDOUT_FILENO, &id, 1);
-	else
-		len = -1;
 	return (len);
 }
 

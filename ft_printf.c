@@ -6,7 +6,7 @@
 /*   By: ataira <ataira@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 02:10:26 by ataira            #+#    #+#             */
-/*   Updated: 2023/02/20 14:01:52 by ataira           ###   ########.fr       */
+/*   Updated: 2023/02/21 18:29:14 by ataira           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,12 @@ size_t	ft_putnbr_base(unsigned long nbr, char id)
 	else
 		base = "0123456789ABCDEF";
 	basenum = ft_strlen(base);
-	convert(surplus, basenum, base, id);
 	if (id == 'p')
 	{
 		write(STDOUT_FILENO, "0x", 2);
 		len += 2;
 	}
+	convert(surplus, basenum, base, id);
 	return (len);
 }
 
